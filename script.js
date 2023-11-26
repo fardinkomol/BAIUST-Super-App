@@ -137,5 +137,34 @@ fontSizes.forEach(size => {
    
 })
 
+// Remove active class from colors
+const changeActiveColorClass = () => {
+    colorPlette.forEach(colorPicker => {
+        colorPicker.classList.remove('active');
+    })
+}
+
 
 // Change primary colors
+colorPlette.forEach(color => {
+    color.addEventListener('click', () => {
+        let primary;
+        // remove active
+        changeActiveColorClass();
+
+        if(color.classList.contains('color-1')){
+            primaryHue = 252;
+        }else if(color.classList.contains('color-2')){
+            primaryHue = 52;
+        }else if(color.classList.contains('color-3')){
+            primaryHue = 352;
+        }else if(color.classList.contains('color-4')){
+            primaryHue = 152;
+        }else if(color.classList.contains('color-5')){
+            primaryHue = 202;
+        }
+        color.classList.add('active');
+
+        root.style.setProperty('--primary-color-hue', primaryHue);
+    })
+})
